@@ -9,6 +9,7 @@ function Item (options) {
   BaseElement.call(this)
   this.text = options.text
   this.id = options.id
+  this.onClick = options.onClick
 }
 
 Item.prototype.render = function (state) {
@@ -18,7 +19,8 @@ Item.prototype.render = function (state) {
   var vtree = h('li.menu-item', [
     h('button#' + this.id, {
       onclick: function (e) {
-        self.send('click', e)
+        e.preventDefault()
+        this.onClick ? this.onClick(e) : self.send('click', e)
       }
     }, this.text)
   ])
