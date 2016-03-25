@@ -20,7 +20,7 @@ Item.prototype.render = function (state) {
     h('button#' + this.id, {
       onclick: function (e) {
         e.preventDefault()
-        this.onclick ? this.onclick(e) : self.send('click', e)
+        self.onclick ? self.onclick(e) : self.send('click', e)
       }
     }, this.text)
   ])
