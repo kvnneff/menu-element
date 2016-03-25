@@ -8,6 +8,7 @@ function Dropdown (options) {
   if (!(this instanceof Dropdown)) return new Dropdown(options)
   BaseElement.call(this)
   var self = this
+  this.onclick = options.onclick
   this.items = options.items
   this.text = options.text
   this.id = options.id
@@ -38,6 +39,7 @@ Dropdown.prototype.render = function (state) {
   function onclick (e) {
     state.open = !state.open
     self.send('click', e)
+    if (self.onclick) self.onclick(e)
   }
 
   this.elements.forEach(function (element) {

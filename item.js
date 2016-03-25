@@ -9,7 +9,7 @@ function Item (options) {
   BaseElement.call(this)
   this.text = options.text
   this.id = options.id
-  this.onClick = options.onClick
+  this.onclick = options.onclick
 }
 
 Item.prototype.render = function (state) {
@@ -20,7 +20,7 @@ Item.prototype.render = function (state) {
     h('button#' + this.id, {
       onclick: function (e) {
         e.preventDefault()
-        this.onClick ? this.onClick(e) : self.send('click', e)
+        this.onclick ? this.onclick(e) : self.send('click', e)
       }
     }, this.text)
   ])
